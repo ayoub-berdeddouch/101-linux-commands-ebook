@@ -95,7 +95,7 @@ Feel free to add new topics in case that you don't find one that you like from t
 * [069-the-bzip2-command.md](ebook/en/content/069-the-bzip2-command.md)
 * [070-the-service-command.md](ebook/en/content/070-the-service-command.md)
 * [071-the-vmstat-command.md](ebook/en/content/071-the-vmstat-command.md)
-* TODO: [072-the-mpstat-command.md](ebook/en/content/072-the-mpstat-command.md)
+* [072-the-mpstat-command.md](ebook/en/content/072-the-mpstat-command.md)
 * TODO: [073-the-ncdu-command.md](ebook/en/content/073-the-ncdu-command.md)
 * [074-the-uniq-command.md](ebook/en/content/074-the-uniq-command.md)
 * TODO: [075-the-rpm-command.md](ebook/en/content/075-the-rpm-command.md)
