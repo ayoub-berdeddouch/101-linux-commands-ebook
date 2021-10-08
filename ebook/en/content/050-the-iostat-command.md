@@ -1,10 +1,8 @@
 # The `iostat` command
-
 ---
 
-The `iostat` command is used for monitoring system `I/O` (input/output) device loading by observing the time the devices are active in relation to their average transfer rates. The `iostat` command generates reports that can be used to change system configuration to better balance the `I/O` load between physical disks.
-
-  The `iostat` is being included in `sysstat` package. If you don’t have it, you need to install first. Command to install on different Distros:
+The `iostat` command in Linux is used for monitoring system input/output statistics for devices and partitions. It monitors system input/output by observing the time the devices are active in relation to their average transfer rates. The iostat produce reports may be used to change the system configuration to raised balance the input/output between the physical disks. iostat is being included in sysstat package. If you don’t have it, you need to install first.
+The `iostat` is being included in `sysstat` package. If you don’t have it, you need to install first. Command to install on different Distros:
 
 1. **On RedHat / CentOS / Fedora**
 
@@ -18,40 +16,57 @@ The `iostat` command is used for monitoring system `I/O` (input/output) device l
   apt-get install sysstat
   ```
 
-## Example : 
-1. To display information about CPU usage, and I/O statistics for every partition on the system 
 
-```bash
-iostat
+
+### Examples:
+
+1. Display a single history-since-boot report for all CPU and Devices:
+```[linux]
+iostat -d 2
 ```
 
-2. To see those details in a more readable format, issue the command iostat -m, which will display the statistics in MB (instead of KB)
+2. Display a continuous device report at two-second intervals:
+```[linux]
+iostat -d 2 6
+```
 
-```bash
-iostat -m
+3.Display, for all devices, six reports at two-second intervals:
+```[linux]
+iostat -x sda sdb 2 6
+```
+
+4.Display, for devices sda and sdb, six extended reports at two-second intervals:
+```[linux]
+iostat -p sda 2 6
 ```
 
 
-# Syntax:
+### Syntax:
+
+```[linux]
+iostat [ -c ] [ -d ] [ -h ] [ -N ] [ -k | -m ] [ -t ] [ -V ] [ -x ]
+       [ -z ] [ [ [ -T ] -g group_name ] { device [...] | ALL } ]
+       [ -p [ device [,...] | ALL ] ] [ interval [ count ] ]
 ```
-iostat [-OPTION] 
-```
 
 
-**Additional Flags and their Functionalities:**
-|Short Flag	|Description|
-|---|---|
-|-c	| Display the CPU utilization report.|
-|-d | Display the device utilization report.|
-|-h | Make the NFS report displayed by option -n easier to read by a human.|
-|-k | Display statistics in kilobytes per second instead of blocks per second. Data displayed are valid only with kernels 2.4 and later.|
-|-m | Display statistics in megabytes per second instead of blocks or kilobytes per second. Data displayed are valid only with kernels 2.4 and later.|
-|-N | Display the registered device mapper names for any device mapper devices. Useful for viewing LVM2 statistics.|
-|-n | Display the network filesystem (NFS) report. This option works only with kernel 2.6.17 and later.|
-|-p [ { device [,...] or ALL } ]|The -p option displays statistics for block devices and all their partitions that are used by the system. If a device name is entered on the command line, then statistics for it and all its partitions are displayed. Last, the ALL keyword indicates that statistics have to be displayed for all the block devices and partitions defined by the system, including those that have never been used. Note that this option works only with post 2.5 kernels.|
-|-t | Print the time for each report displayed. The timestamp format may depend on the value of the S_TIME_FORMAT environment variable (see below).|
-|-V | Print version number then exit.|
-|-x | Display extended statistics. This option works with post 2.5 kernels since it needs /proc/diskstats file or a mounted sysfs to get the statistics. This option may also work with older kernels (e.g. 2.4) only if extended statistics are available in /proc/partitions (the kernel needs to be patched for that).|
-|-z | Tell iostat to omit output for any devices for which there was no activity during the sample period.|
 
+### Additional Flags and their Functionalities:
+
+| **Short Flag**                  | **Description**                                            |                                                                      
+| :------------------------------ | :--------------------------------------------------------- |
+| `-x`                            | Show more details statistics information.                  |                                                                      
+| `-c`                            | Show only the cpu statistic.                               |
+| `-h`                            | Make the NFS report displayed by option -n easier to read by a human.|
+| `-d`                            | Display only the device report                             |                                                                       
+| `-xd                            | Show extended I/O statistic for device only.               |                                                           
+| `-k`                            | Capture the statistics in kilobytes or megabytes.          |                                                                      
+| `-k23`                          | Display cpu and device statistics with delay.              |
+| `-j ID mmcbkl0 sda6 -x -m 2 2`  | Display persistent device name statistics.                 |                                                                      
+| `-p `                           | Display statistics for block devices.                      |
+| `-m`                            | Display statistics in megabytes per second instead of blocks or kilobytes per second. Data displayed are valid only with kernels 2.4 and later.|
+| `-N `                           |  Display lvm2 statistic information.                       |
+| `-n`                            | Display the network filesystem (NFS) report. This option works only with kernel 2.6.17 and later.|
+| `-V`                            | Print version number then exit.|
+| `-z`                            | Tell iostat to omit output for any devices for which there was no activity during the sample period.|
 
