@@ -49,11 +49,11 @@ This is an open-source eBook with 101 Linux commands that everyone should know. 
 ---
 # Basics
 ## File Hierarchy Standard (FHS)
-| Path   | Content                             |
-| ------ | ----------------------------------- |
+| Path     | Content                             |
+| -------- | ----------------------------------- |
 | `/bin`   | Binaries (User)                     |
 | `/boot`  | Static boot loader files            |
-| `/etc`  | Host specific configs               |
+| `/etc`   | Host specific configs               |
 | `/lib`   | Shared libraries and kernel modules |
 | `/sbin`  | Binaries (System/root)              |
 | `/var`   | Varying files (e.g. Logs)           |
@@ -103,7 +103,7 @@ This is an open-source eBook with 101 Linux commands that everyone should know. 
 | [`tac`](https://github.com/bobbyiliev/101-linux-commands-ebook/blob/main/ebook/en/content/003-the-cat-tac-command.md)   | `file`                                     | Print content inverted                     |
 | [`sort`](https://github.com/bobbyiliev/101-linux-commands-ebook/blob/main/ebook/en/content/059-the-sort-command.md)  | `file`                                     | Print sorted                               |
 |         | `file -r -u`                               | Print sorted descending without dublicates |
-| [`head`](https://github.com/bobbyiliev/101-linux-commands-ebook/blob/main/ebook/en/content/004-the-head-command.md)  | `-n10 file | tail -n5`                     | Print lines 5-10                           |
+| [`head`](https://github.com/bobbyiliev/101-linux-commands-ebook/blob/main/ebook/en/content/004-the-head-command.md)  | `-n10 file \| tail -n5`                     | Print lines 5-10                           |
 | [`tail`](https://github.com/bobbyiliev/101-linux-commands-ebook/blob/main/ebook/en/content/005-the-tail-command.md)  | `-f file`                                  | Print new lines automatically              |
 | [`cut`](https://github.com/bobbyiliev/101-linux-commands-ebook/blob/main/ebook/en/content/098-the-cut-command.md)   | `-f -4,7-10,12,15- file`                   | Print selected fields (tab delimited)      |
 |         | `-c -4,7-10,12,15- file`                   | Print selected characters positions        |
@@ -485,7 +485,7 @@ Results are sent to the users mail `/var/spool/mail/username`.
 
 | Command                  | Description                               |
 | ------------------------ | ----------------------------------------- |
-| `rpm -i rpmfile|rpmurl`  | Install package                           |
+| `rpm -i rpmfile\|rpmurl`  | Install package                           |
 | `rpm -e packagename`     | Uninstall package                         |
 | `rpm -q packagename`     | Check if package is installed             |
 | `rpm -ql packagename`    | List files in a package                   |
